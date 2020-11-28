@@ -9,8 +9,18 @@ html, body {
   padding-top: 10%;
 }
 
+#planepath {
+  overflow: visible;
+  height: 100%;
+  max-width: 100%;
+}
+
 #planepath path {
 stroke-width: 5;
+}
+
+#planepath #plane {
+  visibility: hidden;
 }
 
 .video-container {
