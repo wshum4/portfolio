@@ -2,6 +2,17 @@ html, body {
   padding:0;
   margin:0;
 }
+
+.svg-container {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10%;
+}
+
+#planepath path {
+stroke-width: 5;
+}
+
 .video-container {
   position: fixed;
   top: 0;
@@ -10,12 +21,28 @@ html, body {
   height: 100vh;
   overflow: hidden;
 }
+
 .video-container video {
   width: auto;
   height: auto;
   min-width: 100%;
   min-height: 100%;
 }
+
+@media (min-aspect-ratio: 16/9) {
+    #videobg {
+        width:100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #videobg {
+        width:auto;
+        height: 100%;
+    }
+}
+
 .dummy-height {
   height: 500vh;
 }
