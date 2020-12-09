@@ -9,6 +9,10 @@ html, body {
   padding-top: 10%;
 }
 
+#paperplane {
+  width: auto;
+}
+
 #planepath {
   overflow: visible;
   height: 100%;
@@ -23,6 +27,7 @@ stroke-width: 5;
   visibility: hidden;
 }
 
+/* bg video responsiveness */
 .video-container {
   position: fixed;
   top: 0;
@@ -52,6 +57,36 @@ stroke-width: 5;
         height: 100%;
     }
 }
+
+/* @media (max-width: 599px) {
+  #paperplane {
+    width: 60px;
+  }
+}
+
+@media (min-width: 600px) {
+  #paperplane {
+    width: 80px;
+  }
+}
+
+@media (min-width: 768px) {
+  #paperplane {
+    width: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  #paperplane {
+    width: 120px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #paperplane {
+    width: 140px;
+  }
+} */
 
 .dummy-height {
   height: 500vh;

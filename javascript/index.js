@@ -6,8 +6,32 @@ var animation;
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
-gsap.set("#paperplane", {autoAlpha: 1});
-gsap.set("#paperplane", {transformOrigin: "50% 50%"});
+// var def_mobile = 991; // Your mobile breakpoint
+// var isDesktop = function(){
+//   if(window.innerWidth <= def_mobile || "ontouchstart" in document.documentElement){
+//         return false;
+//   } else {
+//         return true;
+//   }
+// };
+
+// console.log('What\'s the width?:  ' + window.innerWidth);
+// console.log('Is it desktop?:  ' + isDesktop());
+
+var viewWidth = window.innerWidth;
+
+if (viewWidth <= 599) {
+  gsap.set("#paperplane", {scale: 0.4, autoAlpha: 1, transformOrigin: "50% 50%"});
+} else if (viewWidth <= 768) {
+  gsap.set("#paperplane", {scale: 0.6, autoAlpha: 1, transformOrigin: "50% 50%"});
+} else if (viewWidth <= 992) {
+  gsap.set("#paperplane", {scale: 0.8, autoAlpha: 1, transformOrigin: "50% 50%"});
+} else {
+  gsap.set("#paperplane", {scale: 1, autoAlpha: 1, transformOrigin: "50% 50%"});
+}
+
+// gsap.set("#paperplane", {scale: 1, autoAlpha: 1});
+// gsap.set("#paperplane", {transformOrigin: "50% 50%"});
 
 animation = gsap.to("#paperplane", {
   scrollTrigger: {
