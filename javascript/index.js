@@ -6,33 +6,41 @@ var animation;
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
-// var def_mobile = 991; // Your mobile breakpoint
-// var isDesktop = function(){
-//   if(window.innerWidth <= def_mobile || "ontouchstart" in document.documentElement){
-//         return false;
-//   } else {
-//         return true;
-//   }
-// };
-
-// console.log('What\'s the width?:  ' + window.innerWidth);
-// console.log('Is it desktop?:  ' + isDesktop());
-
 var viewWidth = window.innerWidth;
+console.log(viewWidth);
+// console.log(typeof window);
 
-if (viewWidth <= 599) {
-  gsap.set("#paperplane", {scale: 0.4, autoAlpha: 1, transformOrigin: "50% 50%"});
-} else if (viewWidth <= 768) {
-  gsap.set("#paperplane", {scale: 0.6, autoAlpha: 1, transformOrigin: "50% 50%"});
-} else if (viewWidth <= 992) {
-  gsap.set("#paperplane", {scale: 0.8, autoAlpha: 1, transformOrigin: "50% 50%"});
-} else {
-  gsap.set("#paperplane", {scale: 1, autoAlpha: 1, transformOrigin: "50% 50%"});
-}
+// compare viewWidth to determine size of paperplane upon loading page
+  if (viewWidth <= 599) {
+   gsap.set("#paperplane", {scale: 0.4, autoAlpha: 1});
+  } else if (viewWidth <= 768) {
+   gsap.set("#paperplane", {scale: 0.6, autoAlpha: 1});
+  } else if (viewWidth <= 992) {
+   gsap.set("#paperplane", {scale: 0.8, autoAlpha: 1});
+  } else {
+   gsap.set("#paperplane", {scale: 1, autoAlpha: 1});
+  }
 
-// gsap.set("#paperplane", {scale: 1, autoAlpha: 1});
-// gsap.set("#paperplane", {transformOrigin: "50% 50%"});
+// adjustScale function determines compares which breakpoint
+function adjustScale (windowSize) {
+  console.log(windowSize);
+  if (windowSize <= 599) {
+    return gsap.set("#paperplane", {scale: 0.4, autoAlpha: 1});
+  } else if (windowSize <= 768) {
+    return gsap.set("#paperplane", {scale: 0.6, autoAlpha: 1});
+  } else if (windowSize <= 992) {
+    return gsap.set("#paperplane", {scale: 0.8, autoAlpha: 1});
+  } else {
+    return gsap.set("#paperplane", {scale: 1, autoAlpha: 1});
+  }
+};
 
+// when window resizes, will call adjustScale function to compare viewWidth
+window.onresize = function () {
+  adjustScale(viewWidth)
+};
+
+// animatino for airplane to link scrolling to flying on the svg path
 animation = gsap.to("#paperplane", {
   scrollTrigger: {
     trigger: "#planepath",
@@ -40,11 +48,6 @@ animation = gsap.to("#paperplane", {
     end: "bottom 80%",
     scrub: true,
     markers: true,
-  //   onUpdate: self => {
-  //     gsap.to("#paperplane", {
-  //       rotation: () => self.direction === 1 ? 0 : -180, overwrite: "auto"
-  //     });
-  //   }
   },
   duration: 40,
   ease: "none",
@@ -58,16 +61,3 @@ animation = gsap.to("#paperplane", {
 });
 
 
-// gsap.to("#plane", {
-//   duration: 20,
-//   // repeat: 12,
-//   // repeatDelay: 3,
-//   // yoyo: true,
-//   ease: "power1.inOut",
-//   motionPath:{
-//     path: "#planepath",
-//     align: "#planepath",
-//     autoRotate: true,
-//     alignOrigin: [0.5, 0.5]
-//   }
-// });
