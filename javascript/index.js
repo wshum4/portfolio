@@ -35,9 +35,13 @@ function adjustScale (windowSize) {
   }
 };
 
+// auto refresh
+function refresh() { location.reload(); }
+
 // when window resizes, will call adjustScale function to compare viewWidth
 window.onresize = function () {
-  adjustScale(viewWidth)
+  adjustScale(viewWidth);
+  refresh();
 };
 
 // animatino for airplane to link scrolling to flying on the svg path
